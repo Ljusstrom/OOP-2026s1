@@ -1,5 +1,7 @@
 package InterfaceEsimerkki;
 
+import java.util.ArrayList;
+
 public class InterfaceExample {
     private static void feedAnimal(Animal animal) {
         animal.eat();
@@ -11,5 +13,6 @@ public class InterfaceExample {
         feedAnimal(new Dog()); // Output: Dog is eating. Dog is sleeping.
         feedAnimal(new Cat()); // Output: Cat is eating. Cat is sleeping.
         feedAnimal(new Mouse());
+
     }
 }

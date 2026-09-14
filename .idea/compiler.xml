@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Moduuli6_2" />
         <module name="Moduuli6_1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="HelloWorld" target="17" />
       <module name="Moduuli1_1" target="17" />
+      <module name="poista" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

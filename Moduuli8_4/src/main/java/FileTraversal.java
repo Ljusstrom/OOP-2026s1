@@ -38,17 +38,17 @@ class FileTraversal {
      * @param args unused
      */
     public static void main(String[] args) throws IOException {
-        Stream<File> files = allFilesIn(new File("./")).filter(endsWith(".java"));
-        Stream<Path> paths = files.map(File::toPath);
-        Stream<List<String>> fileContents = paths.map(path -> {
-            try {
-                return Files.readAllLines(path);
-            } catch (IOException ioe) {
-                throw new UncheckedIOException(ioe);
-            }
-        });
-        Stream<String> lines = fileContents.flatMap(List::stream);
-        Stream<String> words = lines.flatMap(line -> Arrays.stream(line.split("\\W+")).filter(s -> s.length() > 0));
-        words.forEach(System.out::println);
+        allFilesIn(new File("./")).filter(endsWith(".java"))
+                .map(file -> {
+                    try {
+                        return Files.readAllLines(file.toPath());
+                    } catch (IOException ioe) {
+                        throw new UncheckedIOException(ioe);
+                    }})
+                .flatMap(List::stream)
+                .flatMap(line ->
+                        Arrays.stream(line.split("\\W+"))
+                              .filter(s -> !s.isEmpty()))
+                .forEach(System.out::println);
     }
 }
